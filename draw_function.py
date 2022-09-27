@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
+
 # -- linear drawing method start
 def linear_function_draw(k_arg, b_arg):  # take arg  k and b in linear function
     x_cords = []
@@ -9,8 +10,6 @@ def linear_function_draw(k_arg, b_arg):  # take arg  k and b in linear function
         x_cords.append(x)
         y_cords = k_arg * x + b_arg
         y.append(y_cords)
-    print(x_cords)
-    print(y)
     plt.plot(x_cords, y)
     plt.title('График линейной функции')
     plt.xlabel("x")
@@ -27,10 +26,17 @@ def linear_arg_input():  # filtered and transmits argument to linear_function_dr
         k = -float(k_arg.replace('-', ''))
     elif k_arg.isdigit():
         k = float(k_arg)
+    else:
+        print("Error : k_arg is bad syntax. Pls use number")
+        exit()
+
     if '-' in b_arg:
         b = -float(b_arg.replace('-', ''))
     elif b_arg.isdigit():
         b = float(b_arg)
+    else:
+        print("Error : b_arg is bad syntax. Pls use number")
+
     linear_function_draw(k, b)
 
 
@@ -40,13 +46,14 @@ def linear_arg_input():  # filtered and transmits argument to linear_function_dr
 def parabola_function_draw(a_arg, b_arg, c_arg):  # drawing parabola
     print('parabola_function_draw : start')
     x_cords = np.linspace(-100, 100, 1000)
-    y_cords = a_arg * x_cords**2 + b_arg * x_cords + x_cords
+    y_cords = a_arg * x_cords ** 2 + b_arg * x_cords + c_arg
     fig, ax = plt.subplots()
     ax.plot(x_cords, y_cords)
     plt.show()
 
 
 def parabola_arg_input():  # transmit value in parabola_function_draw
+    a = b = c = 0
     a_arg = input('a - arg = ')
     b_arg = input('b - arg = ')
     c_arg = input('c - arg = ')
@@ -56,19 +63,22 @@ def parabola_arg_input():  # transmit value in parabola_function_draw
         a = float(a_arg)
     else:
         print('Error : a_arg is bad syntax. Pls use number')
+        exit()
     if '-' in b_arg:
         b = -float(b_arg.replace('-', ''))  # if negative int
     elif b_arg.isdigit():
         b = float(b_arg)
     else:
         print('Error : b_arg is bad syntax. Pls use number')
+        exit()
     if '-' in c_arg:
         c = -float(c_arg.replace('-', ''))  # if negative int
     elif c_arg.isdigit():  # check on number value
         c = float(c_arg)
     else:
         print('Error : c_arg is bad syntax. Pls use number')
-    print(a , b , c)
+        exit()
+    print(a, b, c)
     parabola_function_draw(a, b, c)
 
 
