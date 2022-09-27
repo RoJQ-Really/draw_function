@@ -43,9 +43,6 @@ def parabola_function_draw(a_arg, b_arg, c_arg):  # drawing parabola
     y_cords = a_arg * x_cords**2 + b_arg * x_cords + x_cords
     fig, ax = plt.subplots()
     ax.plot(x_cords, y_cords)
-    plt.title("График парабола")
-    plt.xlabel('x')
-    plt.ylabel('y')
     plt.show()
 
 
